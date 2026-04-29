@@ -1,0 +1,31 @@
+name: Descargar Gasolinas CNE
+
+on:
+  schedule:
+    - cron: '0 18 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repo
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar librerías
+        run: pip install pandas requests
+
+      - name: Ejecutar script
+        run: python script.py
+
+      - name: Guardar CSV
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-gasolinas
+          path: "*.csv"
