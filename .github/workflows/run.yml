@@ -2,7 +2,7 @@ name: Descargar Gasolinas CNE
 
 on:
   schedule:
-    - cron: '0 07 * * *'
+    - cron: '0 04 * * *'
   workflow_dispatch:
 
 jobs:
